@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+@using Marble.Models;
+
+<link href="~/Content/css/newitem1.css" rel="stylesheet" />
+<link href="~/Content/fancyboxstyle/jquery.fancybox.min.css" rel="stylesheet" />
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+<script src="~/Content/fancyboxstyle/jquery.fancybox.min.js"></script>
+<script src="~/Content/js/myjs.js"></script>
+<style>
+    .latprod a {
+        outline: none;
+    }
+</style>
+<!--slider starts-->
+<div id="carouselExampleIndicators" class="mycarousel carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators" id="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="http://importtilecenter.com/wp-content/uploads/2016/05/MARBLE-TILES.png" alt="First slide">
+                @*<div class="carousel-caption">
+                        <h2><code>Ganesha Marbles</code></h2>
+                        <p><h4>We Offers very latest marbles and tiles at exclusive prices.</h4> </p>
+                    </div>*@
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="http://www.travertinetilesuk.com/img/categories/marble.jpg" alt="Second slide">
+                <div class="carousel-caption">
+                    <h1>Shree Ganesha Marbles</h1>
+                    <p><h4>We Offers very latest marbles and tiles at exclusive prices.</h4> </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="http://www.alliedmarbleinc.com/media/mod_jmslideshow/1200x400_fill_4.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="http://cpimg.tistatic.com/92201/2/template_photo_2.jpg?1532131200047" alt="Fourth slide">
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!--slider ends-->
+<div class="container-fluid bg-dark mt-5" style="min-height:200px">
+    <p class="text-center text-white h3 pt-5 pb-5">
+        Our product ranges are available in a wealth of sizes and styles, floor and wall options to ensure seamless co-ordination for hospitality, residential and commercial interiors.
+
+        Below is our design team's top 3 product picks for spring.
+    </p>
+</div>
+
+<!--new items 1 -->
+<link href="~/Content/css/newitem1.css" rel="stylesheet" />
+<script src="~/Content/js/newitem1.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container-fluid">
+    <h2 class="text-center text-dark">Shree <strong>Ganesh</strong> Marbles & <small>Tiles</small></h2>
+    <h3 class="text-center"><strong>Wholesaler</strong> And <strong>Exporters</strong></h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6  py-0 pl-3 pr-1 featcard">
+            <div id="featured" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid til" src="http://stonenationtiles.com/wp-content/uploads/2015/05/slider2.png" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="#" class="align-self-end">
+                                    <span class="badge">Marbles</span>
+                                    <h4 class="card-title">Fantastic Marbles in India</h4>
+                                    <p class="textfeat" style="display: none;">
+                                        Marbles of different sizes and types
+                                        A marble is a small spherical toy often made from glass, clay, steel, plastic or agate. These balls vary in size. Most commonly, they are about 1 cm (1⁄2 in) in diameter.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid" src="https://bengaltile.com/assets/images/gallery/big/5a01aa05df2df11072017124141.jpg" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="#" class="align-self-end">
+                                    <span class="badge">Tiles</span>
+                                    <h4 class="card-title">Awesome Tiles Can Make Your Home Awesome</h4>
+                                    <p class="textfeat" style="display: none;">
+
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid" src="https://www.4ni.co.uk/gallery/1796/705526e5-d4f0-421f-a91b-a9078e095df0.jpg" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="http://gerbong.id/btn-targetkan-seribu-nasabah-valas-di-batam" class="align-self-end">
+                                    <span class="badge">Stones</span>
+                                    <h4 class="card-title">One Stop Merchant</h4>
+                                    <p class="textfeat" style="display: none;">
+                                        One of the most natural materials used for garden decoration is stone, and you’d be surprised just how many different things you can make out of stone. Some of the following projects are exceptionally easy, and some are much more time consuming, but all are beautiful stone additions to dress up a garden.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid" src="https://pbs.twimg.com/media/DQXxpcWU8AEf4mu.jpg" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="http://gerbong.id/sistem-oss-resmi-diluncurkan" class="align-self-end">
+                                    <span class="badge">मार्बल</span>
+                                    <h4 class="card-title">मार्बल लेलो यहाँ से</h4>
+                                    <p class="textfeat" style="display: none;">
+                                        Marble tiles must be checked for even sizes, as uneven sizes make it difficult to cut, install as well as grout it. More wastage of material will occur.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid" src="https://www.constructionireland.ie/gallery/14341/523eb9f5-07ce-4915-a837-168940add145.jpg" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="http://gerbong.id/grab-gandeng-samsung-telkomsel-dan-erafone" class="align-self-end">
+                                    <span class="badge">Tiles</span>
+                                    <h4 class="card-title">टाइल्स ही टाइल्स </h4>
+                                    <p class="textfeat" style="display: none;">
+                                        A tile is a manufactured piece of hard-wearing material such as ceramic, stone, metal, or even glass, generally used for covering roofs, floors, walls, showers, or other objects such as tabletops. Alternatively, tile can sometimes refer to similar units made from lightweight materials such as perlite, wood, and mineral wool, typically used for wall and ceiling applications. In another sense, a tile is a construction tile or similar object, such as rectangular counters used in playing games (see tile-based game).
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-dark text-white">
+                            <img class="card-img img-fluid" src="http://diversphoto.club/wp-content/uploads/2018/04/the-tile-center-columbia-sc-pt-showroom-after-tile-center-columbia-sc.jpg" alt="">
+                            <div class="card-img-overlay d-flex linkfeat">
+                                <a href="http://gerbong.id/paket-kebijakan-ekonomi-mempermudah-izin-investasi" class="align-self-end">
+                                    <span class="badge">Granites</span>
+                                    <h4 class="card-title">Engineered Granites</h4>
+                                    <p class="textfeat" style="display: none;">
+                                        Many customers care about making eco-friendly decisions with their stone purchase. When it comes to countertops, engineered stone is one of the most environmentally-friendly choices you can make. This stone has many benefits over its natural counterparts: greater durability, beauty, hygiene, and ease-of-maintenance.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 py-0 px-1 d-none d-lg-block">
+            <div class="row">
+                <div class="col-6 pb-2 mg-1	">
+                    <div class="card bg-dark text-white">
+                        <!--boxes right side-->
+                        <img class="card-img img-fluid" src="http://www.areenahs.com/assets/images/unova-1-2000x1125-26-2000x1125-37.jpg" alt="">
+                        @*<div class="card-img-overlay d-flex">
+                                <a href="http://gerbong.id/bi-atur-standarisasi-qr-code" class="align-self-end">
+                                    <span class="badge">Tiles</span>
+                                    <h6 class="card-title">Engineered Stone</h6>
+                                </a>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-6 pb-2 mg-2	">
+                    <div class="card bg-dark text-white">
+                        <img class="card-img img-fluid" src="http://bvtileandstone.com/wp-content/uploads/2017/05/Icon-Scene-Smoke-Silver-1.jpg" alt="">
+                        @*<div class="card-img-overlay d-flex">
+                                <a href="http://gerbong.id/ptsp-bp-batam-masuk-10-terbaik-di-indonesia" class="align-self-end">
+                                    <span class="badge">Wholesaling</span>
+                                    <h6 class="card-title">PTSP BP Batam Masuk 10 Terbaik di Indonesia</h6>
+                                </a>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-6 pb-2 mg-3	">
+                    <div class="card bg-dark text-white">
+                        <img class="card-img img-fluid" src="http://www.granitecountertopschicago.com/rks_images/gallery/item_2204.jpg" alt="">
+                        @*<div class="card-img-overlay d-flex">
+                                <a href="http://gerbong.id/review-gsp-amerika-ingin-perdagangan-saling-menguntungkan" class="align-self-end">
+                                    <span class="badge">Retailing</span>
+                                    <h6 class="card-title">Review GSP: Amerika Ingin Perdagangan Saling Menguntungkan</h6>
+                                </a>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-6 pb-2 mg-4	">
+                    <div class="card bg-dark text-white">
+                        <img class="card-img img-fluid" src="https://i.pinimg.com/originals/b0/87/59/b087593762a20066efb33ba70a765165.jpg" alt="">
+                        @*<div class="card-img-overlay d-flex">
+                                <a href="http://gerbong.id/dpr-setujui-penambahan-anggaran-bp-batam-rp565-miliar" class="align-self-end">
+                                    <span class="badge">Pertumbuhan Ekonomi</span>
+                                    <h6 class="card-title">DPR Setujui Penambahan Anggaran BP Batam Rp565 Miliar</h6>
+                                </a>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="text-center"><kbd>Visit Our Site :</kbd> <a href="#" class="btn btn-outline-dark" target="_blank">Gerbong.id</a></h5>
+</div>
+
+<!--new items 1-->
+
+<link href="~/Content/css/videostyle.css" rel="stylesheet" />
+<div class="header">
+    <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+    </video>
+    <div class="container h-100">
+        <div class="d-flex text-center h-100">
+            <div class="my-auto w-100 text-white">
+                <h1 class="display-3">Shree Ganesh Marbles & Tiles</h1>
+                <h2>THE MANUFACTURER</h2>
+                <h3>The INDIA's Leading Wholesaler and Supplier of Ceramic Tiles & Marbles</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!--main content starts-->
+<div class="container mt-5 mb-5 text-center dbimg">
+    <p class="h1"><u><kbd>Latest Products</kbd></u></p>
+
+    <!--latest offer strats -->
+    <div class="row mt-4">
+
+        @{
+            List<tbl_pic> list = (List<tbl_pic>)ViewData["prodpics"];
+            if (list != null)
+            {
+                foreach (var r in list)
+                {
+                    <div class="latprod col-sm-4 col-md-4 border border-info fancy">
+                        <a href="~/Content/productimg/@r.pic1" class="thumbnail" data-fancybox="gallery" data-width="1700" data-height="1500">
+                            <p class="h3">Pulpit Rock: A famous tourist attraction</p>
+                            <img src="~/Content/productimg/@r.pic1" class="img-responsive" style="width:350px;height:250px">
+                        </a>
+                    </div>
+                }
+            }
+        }
+    </div>
+    <!--latest offers ends-->
+
+</div>
+
+<script type="text/javascript">
+    $('[data-fancybox]').fancybox({
+        loop: false,
+        gutter: 50,
+        buttons: [
+            "zoom",
+            "share",
+            "slideShow",
+            "fullScreen",
+            "download",
+            "thumbs",
+            "close"
+        ]
+    });
+</script>
+
+<!--main contents ends-->

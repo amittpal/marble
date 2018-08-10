@@ -1,0 +1,35 @@
+﻿@using Marble.Models;
+@{
+    ViewBag.Title = "viewmsg";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<div class="container">
+    <h2 class="text-dark text-center">Messages</h2>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-divider"></div>
+    <div class="row mt-4">
+        <div class="col"><strong>Name</strong></div>
+        <div class="col"><strong>E-Mail</strong></div>
+        <div class="col"><strong>Mobile</strong></div>
+        <div class="col"><strong>Message</strong></div>
+    </div>
+    <div class="dropdown-divider"></div>
+    @{
+        List<tbl_contactus> list = (List<tbl_contactus>)ViewData["msg"];
+        if (list != null)
+        {
+            foreach (var r in list)
+            {
+                <div class="row">
+                    <div class="col">@r.name</div>
+                    <div class="col">@r.email</div>
+                    <div class="col">@r.mobile</div>
+                    <div class="col">@r.message</div>
+                </div>
+                <div class="dropdown-divider"></div>
+            }
+        }
+    }
+</div>
+

@@ -1,0 +1,64 @@
+﻿@using Marble.Models;
+@{
+    ViewBag.Title = "inrecord";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2 class="text-center">In Transactions</h2>
+<div class="form-inline justify-content-center">
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="myInput" placeholder="Search Here">
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-dark mt-4" id="myTable">
+        <tr>
+            <th>SNO.</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Size</th>
+            <th>Bill No.</th>
+            <th>Date</th>
+            <th>Delete</th>
+        </tr>
+        @{
+            List<tbl_in> list = (List<tbl_in>)ViewData["in"];
+            if (list != null)
+            {
+                int n = 1;
+                foreach (var r in list)
+                {
+                    <tr>
+                        <td>@n</td>
+                        <td>@r.itemname</td>
+                        <td>@r.quantity</td>
+                        <td>@r.size</td>
+                        <td>@r.billno</td>
+                        <td>@r.date</td>
+                        <td><a href="~/Admin/indel?id=@r.id">Delete</a></td>
+                    </tr>
+                    n++;
+                }
+            }
+        }
+    </table>
+</div>
+
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+
+<script>
+
+    var $rows = $('#myTable tr');
+    $('#myInput').keyup(function () {
+
+        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+            reg = RegExp(val, 'i'),
+            text;
+
+        $rows.show().filter(function () {
+            text = $(this).text().replace(/\s+/g, ' ');
+            return !reg.test(text);
+        }).hide();
+    });
+</script>
+
+

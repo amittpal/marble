@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBMARBLEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_contactus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="mobile" Type="nvarchar(max)" />
+          <Property Name="message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_in">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="itemname" Type="nvarchar(max)" />
+          <Property Name="itemdescription" Type="nvarchar(max)" />
+          <Property Name="quantity" Type="float" />
+          <Property Name="size" Type="nvarchar(max)" />
+          <Property Name="billno" Type="nvarchar(max)" />
+          <Property Name="date" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBMARBLE.dbo.tbl_login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_out">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemname" Type="nvarchar(max)" />
+          <Property Name="itemdescription" Type="nvarchar(max)" />
+          <Property Name="quantity" Type="float" />
+          <Property Name="size" Type="nvarchar(max)" />
+          <Property Name="billno" Type="nvarchar(max)" />
+          <Property Name="partyname" Type="nvarchar(max)" />
+          <Property Name="mobile" Type="nvarchar(max)" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="date" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_pic">
+          <Key>
+            <PropertyRef Name="picid" />
+          </Key>
+          <Property Name="picid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subcategory" Type="nvarchar" MaxLength="100" />
+          <Property Name="pic1" Type="nvarchar(max)" />
+          <Property Name="pic2" Type="nvarchar(max)" />
+          <Property Name="pic3" Type="nvarchar(max)" />
+          <Property Name="pic4" Type="nvarchar(max)" />
+          <Property Name="code" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_products">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="nvarchar" MaxLength="100" />
+          <Property Name="subcategory" Type="nvarchar" MaxLength="100" />
+          <Property Name="quantity" Type="float" />
+          <Property Name="date" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="code" Type="nvarchar(max)" />
+          <Property Name="size" Type="nvarchar(max)" />
+          <Property Name="uom" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="DBMARBLEModelStoreContainer">
+          <EntitySet Name="tbl_contactus" EntityType="Self.tbl_contactus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_in" EntityType="Self.tbl_in" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_out" EntityType="Self.tbl_out" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_pic" EntityType="Self.tbl_pic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_products" EntityType="Self.tbl_products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_login].[id] AS [id], 
+    [tbl_login].[password] AS [password]
+    FROM [dbo].[tbl_login] AS [tbl_login]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMARBLEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_contactus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_in">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="itemname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Double" />
+          <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_out">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Double" />
+          <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="partyname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemid" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_pic">
+          <Key>
+            <PropertyRef Name="picid" />
+          </Key>
+          <Property Name="picid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subcategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pic1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pic2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pic3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pic4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_products">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subcategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Double" />
+          <Property Name="date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="uom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBMARBLEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_contactus" EntityType="Self.tbl_contactus" />
+          <EntitySet Name="tbl_in" EntityType="Self.tbl_in" />
+          <EntitySet Name="tbl_out" EntityType="Self.tbl_out" />
+          <EntitySet Name="tbl_pic" EntityType="Self.tbl_pic" />
+          <EntitySet Name="tbl_products" EntityType="Self.tbl_products" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMARBLEModelStoreContainer" CdmEntityContainer="DBMARBLEEntities">
+          <EntitySetMapping Name="tbl_contactus">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_contactus">
+              <MappingFragment StoreEntitySet="tbl_contactus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_in">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_in">
+              <MappingFragment StoreEntitySet="tbl_in">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="itemdescription" ColumnName="itemdescription" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="billno" ColumnName="billno" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_out">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_out">
+              <MappingFragment StoreEntitySet="tbl_out">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="itemdescription" ColumnName="itemdescription" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="billno" ColumnName="billno" />
+                <ScalarProperty Name="partyname" ColumnName="partyname" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_pic">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_pic">
+              <MappingFragment StoreEntitySet="tbl_pic">
+                <ScalarProperty Name="picid" ColumnName="picid" />
+                <ScalarProperty Name="subcategory" ColumnName="subcategory" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="pic3" ColumnName="pic3" />
+                <ScalarProperty Name="pic4" ColumnName="pic4" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_products">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_products">
+              <MappingFragment StoreEntitySet="tbl_products">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="subcategory" ColumnName="subcategory" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_login">
+            <EntityTypeMapping TypeName="DBMARBLEModel.tbl_login">
+              <MappingFragment StoreEntitySet="tbl_login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

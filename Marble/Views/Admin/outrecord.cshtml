@@ -1,0 +1,86 @@
+﻿@using Marble.Models;
+@{
+    ViewBag.Title = "outrecord";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2 class="text-center"><u>Out Transactions</u></h2>
+<div class="form-inline justify-content-center">
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="myInput" placeholder="Search Here">
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-dark mt-4" id="myTable">
+        <tr>
+            <th>S.NO.</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Size</th>
+            <th>Bill No.</th>
+            <th>Date</th>
+            <th>Party Name</th>
+            <th>Mobile</th>
+            <th>Delete</th>
+        </tr>
+        @{
+            List<tbl_out> list = (List<tbl_out>)ViewData["out"];
+            if (list != null)
+            {
+                int n = 1;
+                foreach (var r in list)
+                {
+                    <tr>
+                        <td>@n.</td>
+                        <td>@r.itemname</td>
+                        <td>@r.quantity</td>
+                        <td>@r.size</td>
+                        <td>@r.billno</td>
+                        <td>@r.date</td>
+                        <td>@r.partyname</td>
+                        <td>@r.mobile</td>
+                        <td><a href="~/Admin/outdel?id=@r.id">Delete</a></td>
+                    </tr>
+                    n++;
+                }
+            }
+        }
+    </table>
+</div>
+
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+
+<script>
+    //function myFunction() {
+    //    // Declare variables
+    //    var input, filter, table, tr, td, i;
+    //    input = document.getElementById("myInput");
+    //    filter = input.value.toUpperCase();
+    //    table = document.getElementById("myTable");
+    //    tr = table.getElementsByTagName("tr");
+
+    //    // Loop through all table rows, and hide those who don't match the search query
+    //    for (i = 0; i < tr.length; i++) {
+    //        td = tr[i].getElementsByTagName("td")[0];
+    //        if (td) {
+    //            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //                tr[i].style.display = "";
+    //            } else {
+    //                tr[i].style.display = "none";
+    //            }
+    //        }
+    //    }
+    //}
+
+    var $rows = $('#myTable tr');
+    $('#myInput').keyup(function () {
+
+        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+            reg = RegExp(val, 'i'),
+            text;
+
+        $rows.show().filter(function () {
+            text = $(this).text().replace(/\s+/g, ' ');
+            return !reg.test(text);
+        }).hide();
+    });
+</script>

@@ -1,0 +1,99 @@
+﻿@using Marble.Models;
+
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/mystyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+
+<style>
+    @@media print {
+        #prntbtn {
+            display: none;
+        }
+
+        #bill {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+
+            #bill h3 {
+                font-weight: bold;
+            }
+    }
+</style>
+
+<a href="~/Admin/AdminIndex" title="print bill" class="text-center text-dark btn btn-success" id="prntbtn">
+    <span class="badge badge-light" style="font-size:20px">Home</span>
+</a>
+
+<a href="#" onclick="print()" style="float:right;" title="print bill" class="text-center text-dark btn btn-warning" id="prntbtn">
+    <span class="badge badge-light" style="font-size:20px">Print Bill</span>
+</a>
+<div id="bill" class="container mt-5">
+
+    <h3 class="text-center">Shree Ganesh Marbles & Tiles</h3>
+    <p class="text-center"><u>GATEPASS</u></p>
+    <table class="table table-striped table-hover table-bordered mt-4 text-dark">
+        @{
+            List<tbl_out> list = (List<tbl_out>)ViewData["bill"];
+            if (list != null)
+            {
+                string partyname = "";
+                string billno = "";
+                string mobile = "";
+                string date = "";
+                foreach (var r in list)
+                {
+                    partyname = r.partyname;
+                    billno = r.billno;
+                    mobile = r.mobile;
+                    date = r.date;
+                }
+                <tr>
+                    <th>Party Name:</th>
+                    <td>@partyname</td>
+                    <th>Date:</th>
+                    <td>@date</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>@mobile</td>
+                    <th>Bill NO.</th>
+                    <td>@billno</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">ITEMS</th>
+                    <th class="text-center">Qty.</th>
+                </tr>
+                foreach (var p in list)
+                {
+                    <tr>
+                        <td colspan="3">@p.itemname</td>
+                        <td>@p.quantity</td>
+                    </tr>
+                }
+
+                float qty = 0;
+                foreach (var u in list)
+                {
+                    qty += (float)u.quantity;
+                }
+                <tr>
+                    <th colspan="3" class="text-center">Total Quantity :</th>
+                    <td>@qty</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>No records found</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/myjs.js"></script>

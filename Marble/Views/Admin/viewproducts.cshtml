@@ -1,0 +1,88 @@
+﻿@using Marble.Models;
+@{
+    ViewBag.Title = "viewproducts";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2 class="text-center"><u>Your Stocks</u></h2>
+<div class="form-inline justify-content-center">
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="myInput" placeholder="Search Here">
+</div>
+
+<div class="container">
+    <table class="table table-bordered table-light mt-3" id="myTable">
+        <tbody>
+            <tr>
+                <th>S.NO.</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Sub-Category</th>
+                <th>Quantity</th>
+                <th>Size</th>
+                <th>Code</th>
+                <th>Update/Delete</th>
+            </tr>
+            @{ int n = 1;
+                List<tbl_products> list = (List<tbl_products>)ViewData["allprod"];
+                if (list != null)
+                {
+                    foreach (var r in list)
+                    {
+                        <tr>
+                            <td>@n.</td>
+                            <td>@r.name</td>
+                            <td>@r.category</td>
+                            <td>@r.subcategory</td>
+                            <td>@r.quantity</td>
+                            <td>@r.size</td>
+                            <td>@r.code</td>
+                            <td>
+                                @*<a href="~/Admin/updatestock?id=@r.productid">Update</a>*@
+                                <a href="~/Admin/delstock?id=@r.productid">Delete</a>
+                            </td>
+                        </tr>
+                        n++;
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+
+<script>
+    //function myFunction() {
+    //    // Declare variables
+    //    var input, filter, table, tr, td, i;
+    //    input = document.getElementById("myInput");
+    //    filter = input.value.toUpperCase();
+    //    table = document.getElementById("myTable");
+    //    tr = table.getElementsByTagName("tr");
+
+    //    // Loop through all table rows, and hide those who don't match the search query
+    //    for (i = 0; i < tr.length; i++) {
+    //        td = tr[i].getElementsByTagName("td")[0];
+    //        if (td) {
+    //            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //                tr[i].style.display = "";
+    //            } else {
+    //                tr[i].style.display = "none";
+    //            }
+    //        }
+    //    }
+    //}
+
+    var $rows = $('#myTable tr');
+    $('#myInput').keyup(function () {
+
+        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+            reg = RegExp(val, 'i'),
+            text;
+
+        $rows.show().filter(function () {
+            text = $(this).text().replace(/\s+/g, ' ');
+            return !reg.test(text);
+        }).hide();
+    });
+</script>

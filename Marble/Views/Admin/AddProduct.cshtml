@@ -1,0 +1,68 @@
+﻿
+
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@{
+    var category = new List<SelectListItem>()
+{
+new SelectListItem() {Value="",Text="Select Category" },
+new SelectListItem() {Value="Marble",Text="Marble" },
+new SelectListItem() {Value="Tiles",Text="Tiles" },
+new SelectListItem() {Value="Stones",Text="Stones" }
+};
+}
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+<script src="~/Content/js/restrict_future_date.js"></script>
+
+<div class="container text-center">
+    <h2 class="text-dark"><u>Add Your Products Here</u></h2>
+    <h2 class="text-info"><u>@ViewBag.msg</u></h2>
+    @using (@Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <table class="table table-bordered table-dark mt-3">
+                <tbody>
+                    <tr>
+                        <th scope="row">Category</th>
+                        <td>
+                            @Html.DropDownList("category", category, new { @class = "form-control", required = "required" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Comapany</th>
+                        <td>@Html.TextBox("subcategory", null, new { @class = "form-control", required = "required", type = "text", placeholder = "Comapany" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>@Html.TextBox("name", null, new { @class = "form-control", required = "required", type = "text", placeholder = "Name" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Code</th>
+                        <td>@Html.TextBox("code", null, new { @class = "form-control", required = "required", type = "text", placeholder = "Code" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Size</th>
+                        <td>@Html.TextBox("size", null, new { @class = "form-control", required = "required", type = "text", placeholder = "Size" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Quantity</th>
+                        <td>@Html.TextBox("quantity", null, new { @class = "form-control", required = "required", type = "number", placeholder = "Quantity" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date</th>
+                        <td>@Html.TextBox("date", null, new { @class = "form-control", id = "date", required = "required", type = "date", min = "2018-07-01", max = "2019-05-20" })</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Images</th>
+                        <td>@Html.TextBox("pic", null, new { @class = "form-control", type = "file", @multiple = "multiple", accept = "image/x-png,image/gif,image/jpeg,image/jpg" })</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">@Html.TextBox("button", "Save", new { @class = "btn-block btn-warning", type = "submit" })</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

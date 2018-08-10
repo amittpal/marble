@@ -1,0 +1,121 @@
+﻿@using Marble.Models;
+@{
+    ViewBag.Title = "productin";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+<!--for populating item description-->
+<script src="~/Content/js/jquery-3.2.0.js"></script>
+<script>
+    function getitemname(size) {
+        $("#itemname").val("");
+        if (size != null) {
+            $("#browsers").children('option').remove();
+            $.ajax({
+                url: "@Url.Action("getitemname", "Admin")",
+                type: 'post',
+                datatype: 'json',
+                data: { size: size },
+                asycs: false,
+                success: function (data) {
+                    if (data != null) {
+                        for (var i = 0; i < data.length;i++) {
+                            //$("#itemname").append("<option value=" + data[i] + ">" + data[i] + "</option>");
+                            $('#browsers').append($("<option></option>").attr("value", data[i]).text(data[i]));
+                        }
+                    }
+                    }
+                })
+        }
+
+    }
+
+
+
+    function itemdes(name) {
+        var size = $("#itemsize").val();
+        if (name != "" && size != "") {
+            $.ajax({
+                url: "@Url.Action("itemdesc", "Admin")",
+                type: 'post',
+                datatype: 'json',
+                data: { name: name,size:size },
+                asycs: false,
+                success: function (data) {
+                    if (data != null) {
+                        $("#itemdesc").val(data);
+                    }
+                    else {
+                        alert("unable to load item description");
+                    }
+                }
+            })
+        }
+        else {
+            $("#itemdesc").val("");
+            alert("Please select size first then item name");
+        }
+    }
+
+
+</script>
+<!--for populating item description ends-->
+<script src="~/Content/js/restrict_future_date.js"></script>
+<div class="container">
+    <p class="text-dark text-center mt-3 h1"><u>Item In</u></p>
+    <h2 class="text-success text-center"><u>@ViewBag.msg</u></h2>
+    @using (@Html.BeginForm("productin", "Admin", FormMethod.Post))
+    {
+        <div class="form-group">
+            <table class="table table-striped table-hover table-bordered table-dark mt-4">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>Bill No. :</label>
+                            @Html.TextBox("billno", null, new { id = "billno", @class = "form-control", placeholder = "Bill Number", type = "text" })
+                        </td>
+                        <td>
+                            <label>Date :</label>
+                            @Html.TextBox("date", null, new { @class = "form-control", id = "date", required = "required", type = "date", min = "2018-07-01", max = "2019-05-20" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Size :</label>
+                            @{
+                                List<tbl_products> list = (List<tbl_products>)ViewData["prodname"];
+                                if (list != null)
+                                {
+                                    <input list="br" id="itemsize" onchange="getitemname(this.value)" placeholder="Select Item Size" class="form-control" name="size">
+                                    <datalist id="br">
+                                        @foreach (var r in list)
+                                        {
+                                            <option data-value="@r.size" value="@r.size">@r.size</option>
+                                        }
+                                    </datalist>
+                                }
+                            }
+                        </td>
+                        <td>
+                            <label>Item Name :</label>
+                            <input list="browsers" id="itemname" placeholder="Select Item Name" name="itemname" required class="form-control" onchange="itemdes(this.value)">
+                            <datalist id="browsers"></datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Item Description :</label>
+                            @Html.TextBox("itemdescription", null, new { placeholder = "Item Description", id = "itemdesc", @class = "form-control", required = "required", type = "text", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            <label>Quantity :</label>
+                            @Html.TextBox("quantity", null, new { id = "quantity", @class = "form-control", placeholder = "Quantity", required = "required", type = "float" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">@Html.TextBox("button", "Save", new { @class = "btn-block btn-warning", type = "submit" })</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

@@ -1,0 +1,129 @@
+﻿
+@{
+    Layout = null;
+}
+@using Marble.Models;
+@{ 
+    if (Session["loginid"] != null)
+    {
+        ViewBag.username = Session["loginid"];
+    }
+    else
+    {
+        //ViewBag.username = "invalid user";
+        Response.Redirect("~/Home/login");
+    }
+}
+<!DOCTYPE html>
+<style>
+    .adminhead a{
+        margin:13px;
+    }
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ganesha Marbles</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/mystyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>AdmiMaster</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <!--navbar starts-->
+            <nav class="my-navbar navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="~/Home/Index">
+                    <h3><strong><u>Shree Ganesha Marbles & Tiles</u></strong></h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            @*<form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>*@
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Admin/AdminIndex">DashBoard <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Transactions
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="~/Admin/inrecord">In Transactions</a>
+                                <a class="dropdown-item" href="~/Admin/outrecord">Out Transactions</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Admin/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--navbars ends-->
+            <div class="adminhead row text-center" style="margin-top:100px">
+                <div class="col-lg-4 col-md-12 col-xs-12 bg-warning">
+                    <img src="http://www.freetattoodesigns.org/images/rihanna-sanskrit.gif" class="img-responsive" alt="Admin Image" width="100%" height="100%">
+                </div>
+                <div class="col-lg-8 col-md-12 col-xs-12 bg-danger" style="text-align:right">
+                    <a href="~/Admin/AddProduct" title="add item" class="text-dark btn btn-success">
+                        <span class="badge badge-light" style="font-size:20px">Item</span>
+                    </a>
+                    <a href="~/Admin/productin" title="product purchased" class="text-dark btn btn-warning">
+                        <span class="badge badge-light" style="font-size:20px">In</span>
+                    </a>
+                    <a href="~/Admin/productout" title="product sold" class="text-dark btn btn-info">
+                        <span class="badge badge-light" style="font-size:20px">Out</span>
+                    </a>
+                    <a href="~/Admin/viewproducts" title="view all item" class="text-dark btn btn-dark">
+                        <span class="badge badge-light" style="font-size:20px">View</span>
+                    </a>
+                    <a href="~/Admin/viewmsg" title="add item" class="text-dark btn btn-success">
+                        <span class="badge badge-light" style="font-size:20px">Messages</span>
+                    </a>
+                </div>
+            </div>            
+        </header>
+        <h1 class="text-center text-dark font-weight-bold">Welcome @ViewBag.username</h1>
+        <div style="min-height:600px;">@RenderBody()</div>
+
+        <footer class="myfooter navbar bg-dark">
+            <a class="navbar-brand" href="~/Home/Index">
+                <h3><strong><u>Ganesha Marbles</u></strong></h3>
+            </a>
+            <h5><strong><u class=" text-danger">All Rights Reserved |</u></strong></h5>
+            <h5><strong><u class="text-danger">Designed & Developed By Midas IT Solutions</u></strong></h5>
+            <div id="socialicons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-youtube"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </footer>
+
+
+        <script src="~/Content/js/jquery-3.2.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="~/Content/js/bootstrap.min.js"></script>
+        <script src="~/Content/js/myjs.js"></script>
+        <script>
+            $(window).scroll(function (event) {
+                var scroll = $(window).scrollTop();
+                // Do something
+                //setInterval(function () { $("#brand").css('tranform', '	rotate(90deg)').fadeToggle(1000); }, 1000);
+                //$(".navbar-brand").css('transform', 'rotate(' + scroll + 'deg)');
+                //$('body').css({ "background-image": "url('https://www.nature.org/cs/groups/webcontent/@@web/@@rhodeisland/documents/media/hpsp-bradford-dam.jpg')","backgound-size":"cover" });
+            });
+        </script>
+    </div>
+</body>
+</html>

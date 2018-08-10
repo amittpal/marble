@@ -1,0 +1,246 @@
+﻿
+@{
+    Layout = null;
+}
+@using Marble.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="Shree Ganesha Marbles & Tiles,Tiles,Stones,Home Furnishing,wall tiles,floor tiles,wall marble,floor marbles"></meta>
+    <meta name="keywords" content="gorakhpur marbles and tiles,marbles and tiles shops in gorakhpur,MARBLES,marbles,Marbles,MARBLE,marble,Marble,TILES,tiles,Tiles,TILE,tile,Tile,wall marbles,floor marbles,wall tiles,floor tiles"></meta>
+    <meta name="rating" content="general" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="distribution" content="global" />
+    <meta name="robots" content="Home, follow" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shree Ganesh Marble & Tiles</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/css/navbar_techandall.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .sonar-wave {
+            animation: sonarWave 2s linear infinite;
+            font-weight:bolder;
+        }
+
+        @@keyframes sonarWave {
+            from {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <!--navbar starts-->
+        <nav class="my-navbar navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" id="bnc" href="~/Home/Index">
+                <p class="navp1"><strong>Shree Ganesh Marble & Tiles</strong></p>
+                <p class="navp2" id="brand">Wholesaler & Exporters</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 nav">
+                    <li class="nav-item active">
+                        @*<form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>*@
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="~/Home/Index"><i class="fa fa-home" style="font-size:30px;margin-top:-18px;"></i></a>
+                    </li>
+
+                    <li class="nav-item drp">
+                        <a href="#" class="nav-link">Products</a>
+                        <!----- Full Drop Down Name Ends Here ---->
+                        <!----- Full Drop Down Contents  Starts Here---->
+
+                        <div class="fulldrop">
+                            <div class="column">
+                                <h3>Marbles</h3>
+                                <ul>
+                                    @{
+                                        List<tbl_products> list = (List<tbl_products>)ViewData["prodmarbles"];
+                                        if (list != null)
+                                        {
+                                            foreach (var r in list)
+                                            {
+                                                <li><a href="~/Home/loadproduct?id=@r.productid">@r.name</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+
+
+                            <div class="column">
+                                <h3>Tiles</h3>
+                                <ul>
+                                    @{
+                                        List<tbl_products> list1 = (List<tbl_products>)ViewData["prodtiles"];
+                                        if (list1 != null)
+                                        {
+                                            foreach (var r in list1)
+                                            {
+                                                <li><a href="~/Home/loadproduct?id=@r.productid">@r.name</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+
+                            <div class="column">
+                                <h3>Stones</h3>
+                                <ul>
+                                    @{
+                                        List<tbl_products> list2 = (List<tbl_products>)ViewData["prodstones"];
+                                        if (list2 != null)
+                                        {
+                                            foreach (var r in list2)
+                                            {
+                                                <li><a href="~/Home/loadproduct?id=@r.productid">@r.name</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/login">Admin Login</a>
+                    </li>
+                    @*<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                SignIn/Register
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="~/Home/login">Sign In</a>
+                                <a class="dropdown-item" href="~/Home/registration">Register</a>
+                            </div>
+                        </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/contactus">ContacUs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">AboutUs</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <!--navbars ends-->
+    </header>
+    <div>@RenderBody()</div>
+
+
+    <div class="card text-center">
+        <div class="card-header h1 text-danger">
+            <marquee scrollamount="12" behavior="alternate" onmouseout="this.start()" onmouseover="this.stop()">Our Recent Projects</marquee>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Shaalimaar Construction Lucknow</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary gog">Details about Projects</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+
+    <div class="container-fluid text-dark text-center mt-5 pb-5" style="background-image:url('https://i.pinimg.com/originals/03/72/2f/03722fdc5c5ffe3ef934fac7ac7c8990.jpg');background-attachment:fixed;background-size:cover;background-position:center">
+        <p class="h1 font-weight-bold pt-5"><u class="sonar-wave text-danger">ABOUT US</u></p>
+
+        <p class="mt-5">Founded in 1969 by late Shri H. L. Somany, Somany Ceramics is an internationally acclaimed organization that specializes in ceramics and allied products segment. In the last four decades, Somany Ceramics has established itself as an unchallenged leader in the Indian Ceramic Industry with significant presence in India, Africa, The Middle East, United Kingdom and Russia.</p>
+        <p>
+            The company has manufacturing plants in Kadi (Gujarat) and Kassar (Haryana), India and other joint venture plants, generating a total production capacity of 60 million square meters annually. Somany is a complete décor solutions provider and its extensive range of products include – Ceramic Wall and Floor Tiles, Polished Vitrified Tiles, Glazed Vitrified Tiles, Digital Tiles, Sanitaryware and Bath Fittings as well as Tile Laying Solutions.
+            What makes Somany a relevant and trusted company today is its dynamic capability to evolve with changing décor aesthetics over the years. It understands its consumers, and in return, its patrons trust Somany to offer the best tiles, sanitaryware & bath fittings products in India.
+        </p>
+        <p class="pb-5">
+            Whether it’s style, quality or technological brilliance, Somany’s determined pursuit​ ​of delivering excellence has placed the brand in an illustrious bracket. This wouldn’t have been possible without the vision of Late Shri H. L. Somany, who laid the groundwork for the company’s long-lasting success. He believed in staying ahead of his time – creating trends instead of simply following them, constantly innovating as opposed to catching up. His wisdom is not only an intrinsic part of the company’s DNA but also of the following generations of leaders. With Late Shri H. L. Somany at the helm as founder, Shri Shreekant Somany as the CMD and Shri Abhishek Somany as the MD, the company is heading towards an exciting phase of expansion and growth.
+            Know more about Somany Values, Management Team, Exports, Financials, Certifications, and Manufacturing Units
+        </p>
+
+    </div>
+
+    <footer class="navbar bg-dark mt-5">
+        <a href="~/Home/Index" class="text-white">
+            <h5><strong><u>Shree Ganesh Marble & Tiles</u></strong></h5>
+            <p>Siswakhurd, Shorthgarh Road, Siddharth Nagar,(U.P.)</p>
+            <p>Phone : 9415162808-9839136111-9839184111</p>
+            <p>E-mail: durgesh.maddheshiya@gmail.com</p>
+        </a>
+        <div class="text-white">
+            <h5>&#169 2018 Designed & Developed By Midas IT Solutions</h5>
+            <h6>All Rights Reserved</h6>
+            <h6>Engineering College, Lucknow-226021</h6>
+        </div>
+        <div id="socialicons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            @*<a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-youtube"></a>*@
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+        </div>
+    </footer>
+
+    <!--message form-->
+
+    <link href="~/Content/css/messageicon.css" rel="stylesheet" />
+    <div class="nb-form">
+        <p class="title">Request A Quote</p>
+        <img src="https://www.freeiconspng.com/uploads/pink-email-message-icon-5.png" alt="msg icon" class="user-icon">
+        <p class="message">Your Messages are valuable for us.<br />We will contact you as soon as possible.</p>
+        @using (@Html.BeginForm("contactus", "Home", FormMethod.Post))
+        {
+            @Html.TextBox("name", null, new { @class = "form-control", type = "text", placeholder = "Name", required = "required" })
+            @Html.TextBox("email", null, new { @class = "form-control", type = "email", placeholder = "E-Mail", required = "required" })
+            @Html.TextBox("mobile", null, new { @class = "form-control", type = "number", placeholder = "Phone", pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}", required = "required" })
+            @Html.TextArea("message", null, new { @class = "form-control", rows = "3", placeholder = "Message", style = "resize:none", required = "required" })
+            @Html.TextBox("button", "Submit", new { @class = "btn-block btn-warning fa fa-paper-plane-o", type = "submit", style = "cursor:pointer" })
+        }
+    </div>
+    <!--message form-->
+    <script src="~/Content/js/jquery-3.2.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/myjs.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            setInterval(function () { $(".gog").css('background', '	rgb(191, 0, 255)').fadeToggle(1000); }, 1000);
+
+        });
+        $(window).scroll(function (event) {
+            var scroll = $(window).scrollTop();
+            // Do something
+            setInterval(function () { $("#brand").css('tranform', '	rotate(90deg)').fadeToggle(2000); });
+            //$(".para").animate({
+            //    right: "+=50",
+            //    width: "toggle"
+            //}, 5000, function () {
+            //    // Animation complete.
+            //});
+        });
+
+    </script>
+</body>
+</html>
