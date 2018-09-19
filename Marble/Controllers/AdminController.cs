@@ -1,18 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using Marble.Models;
+using System.Text;
 
 namespace Marble.Controllers
 {
     public class AdminController : Controller
     {
         DBMARBLEEntities db = new DBMARBLEEntities();
-        // GET: Admin
-        
+
+        // Generate a random password  
+        //public string RandomPassword(int length)
+        //{
+        //    Random r = new Random();                    //for generating random password from 1 to 200
+        //    //int a = r.Next(1, 200);
+        //    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //    return new string(Enumerable.Repeat(chars, length).Select(s => s[r.Next(s.Length)]).ToArray());
+        //}
         public ActionResult AdminIndex()
         {            
             return View();
@@ -22,8 +30,9 @@ namespace Marble.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddProduct(tbl_products tblprod, HttpPostedFileBase[] pic, string code)
+        public ActionResult AddProduct(tbl_products tblprod, HttpPostedFileBase[] pic, string code,int quantity)
         {
+            //string pass = RandomPassword(quantity);                       // getting random password
             try
             {
                 if (db.tbl_products.Any(p => p.code == code))
@@ -44,7 +53,7 @@ namespace Marble.Controllers
                                 //Checking file is available to save.  
                                 if (file != null)
                                 {
-                                    string randomname = Path.GetRandomFileName();
+                                string randomname = Path.GetRandomFileName();
                                     var InputFileName = randomname + Path.GetFileName(file.FileName);
                                     var ServerSavePath = Path.Combine(Server.MapPath("~/Content/productimg/") + InputFileName);
                                     //Save file to server folder  
@@ -142,6 +151,16 @@ namespace Marble.Controllers
             var list = db.tbl_products.Where(p => p.size == size).Select(p => p.name).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+        //ajax method to check billno existence
+        public ActionResult chkbillno(string billno)
+        {
+            bool msg = true;
+            if (db.tbl_out.Any(a=>a.billno==billno))
+            {
+                msg = false;
+            }
+            return Json(msg, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult itemdesc(string name,string size)
         {
             string desc = "";
@@ -178,9 +197,6 @@ namespace Marble.Controllers
             bool res = false;
             try
             {
-                tbl_out dbBillno = db.tbl_out.SingleOrDefault(p => p.billno == billno);
-                if (dbBillno==null)
-                {
                         tblout.itemid = Convert.ToInt32(TempData["itemid"].ToString());
                         db.tbl_out.Add(tblout);
                         db.SaveChanges();
@@ -189,7 +205,7 @@ namespace Marble.Controllers
                         db.SaveChanges();
                         ViewBag.msg = "Operation successfull.server";
                         res = true;
-                }
+                
             }
             catch (Exception e)
             {
